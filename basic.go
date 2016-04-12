@@ -49,9 +49,15 @@ func FiboHandler(w http.ResponseWriter, r *http.Request) {
             w.Write([]byte(fmt.Sprintf("Negative numbers not allowed.")))
           }
 
+	// Return the fist N numbers of the serie OR return the serie UNTIL N?
           for i := uint64(0); i < valueUint; i++ {
-              sl = append(sl, fx())
-          }
+	  //for {
+	     ret := fx()
+		if ret > valueUint { break ; } 
+              sl = append(sl, ret)
+	     
+          }  
+  	
 
           serieFibo := ResFiboSerie{
             ReqNumber: valueUint,
